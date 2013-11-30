@@ -36,8 +36,7 @@
             "Test::Pod::Coverage" : "1.08"
          },
          "requires" : {
-            "Mojolicious" : "4.57",
-            "Mojolicious::Plugin::DSC" : "0.997",
+            "Mojolicious" : "0",
             "perl" : "5.016003"
          }
       }
@@ -45,7 +44,7 @@
    "provides" : {
       "Ado" : {
          "file" : "lib/Ado.pm",
-         "version" : "0.10"
+         "version" : "0.11"
       },
       "Ado::Build" : {
          "file" : "lib/Ado/Build.pm",
@@ -70,6 +69,38 @@
       "Ado::Control::Default" : {
          "file" : "lib/Ado/Control/Default.pm",
          "version" : 0
+      },
+      "Ado::Model" : {
+         "file" : "lib/Ado/Model.pm",
+         "version" : "0.01"
+      },
+      "Ado::Model::Domains" : {
+         "file" : "lib/Ado/Model/Domains.pm",
+         "version" : 0
+      },
+      "Ado::Model::Groups" : {
+         "file" : "lib/Ado/Model/Groups.pm",
+         "version" : 0
+      },
+      "Ado::Model::Sessions" : {
+         "file" : "lib/Ado/Model/Sessions.pm",
+         "version" : 0
+      },
+      "Ado::Model::SessionsOld" : {
+         "file" : "lib/Ado/Model/SessionsOld.pm",
+         "version" : 0
+      },
+      "Ado::Model::SqliteSequence" : {
+         "file" : "lib/Ado/Model/SqliteSequence.pm",
+         "version" : 0
+      },
+      "Ado::Model::UserGroup" : {
+         "file" : "lib/Ado/Model/UserGroup.pm",
+         "version" : 0
+      },
+      "Ado::Model::Users" : {
+         "file" : "lib/Ado/Model/Users.pm",
+         "version" : 0
       }
    },
    "release_status" : "stable",
@@ -84,5 +115,5 @@
          "url" : "http://github.com/kberov/Ado"
       }
    },
-   "version" : "0.10"
+   "version" : "0.11"
 }

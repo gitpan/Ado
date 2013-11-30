@@ -2,36 +2,47 @@ package Ado::Build;
 use strict;
 use warnings FATAL => 'all';
 use File::Spec::Functions qw(catdir catfile);
-use base 'Module::Build';
+use File::Path qw(make_path);
+use File::Copy qw(copy);
+use parent 'Module::Build';
 
 sub process_public_files {
     my $self = shift;
     for my $asset (@{$self->rscan_dir('public')}) {
         if (-d $asset) {
-            File::Path::make_path(catdir('blib', $asset));
+            make_path(catdir('blib', $asset));
             next;
         }
-        File::Copy::copy($asset, catfile('blib', $asset));
+        copy($asset, catfile('blib', $asset));
     }
     return;
 }
 
 sub process_etc_files {
     my $self = shift;
-
-    #configuration files should be 'rw' by the owner only
-
     for my $asset (@{$self->rscan_dir('etc')}) {
         if (-d $asset) {
-            File::Path::make_path(catdir('blib', $asset));
+            make_path(catdir('blib', $asset));
             next;
         }
-        File::Copy::copy($asset, catfile('blib', $asset));
-        chmod 0600, catfile('blib', $asset);
+        copy($asset, catfile('blib', $asset))
+          unless $asset =~ /\d+\.sql/;
     }
     return;
 }
 
+sub ACTION_install {
+    my $self = shift;
+    $self->SUPER::ACTION_install;
+    my $etc_dir = $self->install_path('etc');
+
+    #make some files writable by the application only
+    for my $asset (qw(ado.sqlite ado.conf)) {
+        chmod(0600, catfile($etc_dir, $asset))
+          || Carp::cluck("Problem with $etc_dir/$asset: $!");
+    }
+    return;
+}
 1;
 
 __END__
@@ -69,6 +80,12 @@ Returns void.
 
 Moves files found in C<Ado/public> to C<Ado/blib/public>.
 Returns void.
+
+=head2 ACTION_install
+
+Changes file permissions to C<0600> of some files 
+like C<etc/ado.sqlite> and C<etc/ado.conf> that need it 
+during runtime.
 
 =head1 SEE ALSO
 
