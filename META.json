@@ -36,7 +36,9 @@
             "Test::Pod::Coverage" : "1.08"
          },
          "requires" : {
-            "Mojolicious" : "0",
+            "IO::Socket::SSL" : "1.957",
+            "Mojolicious" : "4.59",
+            "Mojolicious::Plugin::DSC" : "0.999",
             "perl" : "5.016003"
          }
       }
@@ -44,7 +46,7 @@
    "provides" : {
       "Ado" : {
          "file" : "lib/Ado.pm",
-         "version" : "0.11"
+         "version" : "0.12"
       },
       "Ado::Build" : {
          "file" : "lib/Ado/Build.pm",
@@ -64,6 +66,10 @@
       },
       "Ado::Control::Ado::Default" : {
          "file" : "lib/Ado/Control/Ado/Default.pm",
+         "version" : 0
+      },
+      "Ado::Control::Ado::Users" : {
+         "file" : "lib/Ado/Control/Ado/Users.pm",
          "version" : 0
       },
       "Ado::Control::Default" : {
@@ -101,6 +107,10 @@
       "Ado::Model::Users" : {
          "file" : "lib/Ado/Model/Users.pm",
          "version" : 0
+      },
+      "Ado::Plugin" : {
+         "file" : "lib/Ado/Plugin.pm",
+         "version" : 0
       }
    },
    "release_status" : "stable",
@@ -115,5 +125,5 @@
          "url" : "http://github.com/kberov/Ado"
       }
    },
-   "version" : "0.11"
+   "version" : "0.12"
 }

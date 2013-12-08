@@ -16,7 +16,7 @@ name: Ado
 provides:
   Ado:
     file: lib/Ado.pm
-    version: 0.11
+    version: 0.12
   Ado::Build:
     file: lib/Ado/Build.pm
     version: 0
@@ -31,6 +31,9 @@ provides:
     version: 0
   Ado::Control::Ado::Default:
     file: lib/Ado/Control/Ado/Default.pm
+    version: 0
+  Ado::Control::Ado::Users:
+    file: lib/Ado/Control/Ado/Users.pm
     version: 0
   Ado::Control::Default:
     file: lib/Ado/Control/Default.pm
@@ -59,6 +62,9 @@ provides:
   Ado::Model::Users:
     file: lib/Ado/Model/Users.pm
     version: 0
+  Ado::Plugin:
+    file: lib/Ado/Plugin.pm
+    version: 0
 recommends:
   DBD::SQLite: 1.40
   DBD::mysql: 4.025
@@ -69,10 +75,12 @@ recommends:
   Test::Pod: 1.48
   Test::Pod::Coverage: 1.08
 requires:
-  Mojolicious: 0
+  IO::Socket::SSL: 1.957
+  Mojolicious: 4.59
+  Mojolicious::Plugin::DSC: 0.999
   perl: 5.016003
 resources:
   bugtracker: http://github.com/kberov/Ado/issues
   license: http://www.gnu.org/licenses/lgpl-3.0.txt
   repository: http://github.com/kberov/Ado
-version: 0.11
+version: 0.12
