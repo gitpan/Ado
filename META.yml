@@ -5,7 +5,8 @@ author:
 build_requires:
   Test::More: 0
 configure_requires:
-  Module::Build: 0
+  Module::Build: 0.3800
+  Software::License: 0.103007
 dynamic_config: 1
 generated_by: 'Module::Build version 0.4003, CPAN::Meta::Converter version 2.120921'
 license: open_source
@@ -16,7 +17,7 @@ name: Ado
 provides:
   Ado:
     file: lib/Ado.pm
-    version: 0.13
+    version: 0.14
   Ado::Build:
     file: lib/Ado/Build.pm
     version: 0
@@ -65,9 +66,11 @@ provides:
   Ado::Plugin:
     file: lib/Ado/Plugin.pm
     version: 0
+  Ado::Plugin::Routes:
+    file: lib/Ado/Plugin/Routes.pm
+    version: 0
 recommends:
   DBD::SQLite: 1.40
-  DBD::mysql: 4.025
   Devel::Cover: 1.08
   Perl::Tidy: 0
   Test::CheckManifest: 0
@@ -83,4 +86,4 @@ resources:
   bugtracker: http://github.com/kberov/Ado/issues
   license: http://www.gnu.org/licenses/lgpl-3.0.txt
   repository: http://github.com/kberov/Ado
-version: 0.13
+version: 0.14

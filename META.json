@@ -21,13 +21,13 @@
       },
       "configure" : {
          "requires" : {
-            "Module::Build" : "0"
+            "Module::Build" : "0.3800",
+            "Software::License" : "0.103007"
          }
       },
       "runtime" : {
          "recommends" : {
             "DBD::SQLite" : "1.40",
-            "DBD::mysql" : "4.025",
             "Devel::Cover" : "1.08",
             "Perl::Tidy" : "0",
             "Test::CheckManifest" : "0",
@@ -46,7 +46,7 @@
    "provides" : {
       "Ado" : {
          "file" : "lib/Ado.pm",
-         "version" : "0.13"
+         "version" : "0.14"
       },
       "Ado::Build" : {
          "file" : "lib/Ado/Build.pm",
@@ -111,6 +111,10 @@
       "Ado::Plugin" : {
          "file" : "lib/Ado/Plugin.pm",
          "version" : 0
+      },
+      "Ado::Plugin::Routes" : {
+         "file" : "lib/Ado/Plugin/Routes.pm",
+         "version" : 0
       }
    },
    "release_status" : "stable",
@@ -125,5 +129,5 @@
          "url" : "http://github.com/kberov/Ado"
       }
    },
-   "version" : "0.13"
+   "version" : "0.14"
 }

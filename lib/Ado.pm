@@ -1,7 +1,17 @@
 package Ado;
 use Mojo::Base 'Mojolicious';
+use File::Spec::Functions qw(splitdir catdir catfile);
+
+BEGIN {
+    return if $ENV{MOJO_HOME};
+    my @home = splitdir File::Basename::dirname(__FILE__);
+    while (pop @home) {
+        $ENV{MOJO_HOME} ||= catdir(@home) if -s catfile(@home, 'bin', 'ado');
+    }
+}
+
 use Ado::Control;
-our $VERSION = '0.13';
+our $VERSION = '0.14';
 
 # This method will run once at server start
 sub startup {
@@ -13,8 +23,8 @@ sub startup {
 #load ado.conf
 sub load_config {
     my $app = shift;
-    $app->plugin('Config', {file => $app->home->rel_file('etc/' . $app->moniker . '.conf')});
-
+    $ENV{MOJO_CONFIG} ||= catfile($ENV{MOJO_HOME}, 'etc', 'ado.conf');
+    $app->plugin('Config');
     return $app;
 }
 
@@ -33,6 +43,7 @@ sub load_plugins {
 
     my $plugins = $app->config('plugins') || [];
     foreach my $plugin (@$plugins) {
+        $app->log->debug('Loading Plugin:' . $app->dumper($plugin));
         if (ref $plugin eq 'HASH') {
             $app->plugin($plugin->{name} => $plugin->{config});
         }
@@ -45,21 +56,20 @@ sub load_plugins {
 
 #load routes defined in ado.conf
 sub load_routes {
-    my ($app) = @_;
+    my ($app, $config_routes) = @_;
+    $config_routes ||= $app->config('routes') || [];
     my $routes = $app->routes;
-    my $config_routes = $app->config('routes') || [];
 
     foreach my $route (@$config_routes) {
-        my ($pattern) = keys %$route;    #$pattern is the only key
-        my ($to, $via, $qrs) =
-          ($route->{$pattern}{to}, $route->{$pattern}{via}, $route->{$pattern}{qrs} || {});
+        my ($pattern, $to, $via, $params) =
+          ($route->{route}, $route->{to}, $route->{via}, $route->{params});
 
         next unless $to;
-        my $r = keys %$qrs ? $routes->route($pattern, %$qrs) : $routes->route($pattern);
+        my $r = $params ? $routes->route($pattern, %$params) : $routes->route($pattern);
 
         #TODO: support other routes descriptions beside 'via'
         if ($via) {
-            $r->via(@{$via});
+            $r->via(@$via);
         }
         $r->to(ref $to eq 'HASH' ? %$to : $to);
     }
@@ -126,7 +136,14 @@ Returns $app.
 
 =head2 load_routes
 
-Loads predefined routes in C<$config-E<gt>routes>
+Loads predefined routes from C<$config-E<gt>routes>.
+This is an C<ARRAYREF> in which each element is a C<HASHREF> with
+keys corresponding to a method name and value the parameters that 
+will be passed tot he method. Currently we use the C<route> value to pass it
+to L<Mojolicious::Routes/route>,C<params> value is the second parameter to instantiate the route. C<via> and C<to> values are passed 
+to the newly created route. 
+See L<Mojolicious::Routes::Route> and L<Mojolicious::Guides::Routing> for more.
+
 Returns $app.
 
 =head2 define_hooks
