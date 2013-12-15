@@ -39,14 +39,14 @@
             "IO::Socket::SSL" : "1.957",
             "Mojolicious" : "4.59",
             "Mojolicious::Plugin::DSC" : "0.999",
-            "perl" : "5.016003"
+            "perl" : "5.014002"
          }
       }
    },
    "provides" : {
       "Ado" : {
          "file" : "lib/Ado.pm",
-         "version" : "0.14"
+         "version" : "0.15"
       },
       "Ado::Build" : {
          "file" : "lib/Ado/Build.pm",
@@ -129,5 +129,5 @@
          "url" : "http://github.com/kberov/Ado"
       }
    },
-   "version" : "0.14"
+   "version" : "0.15"
 }

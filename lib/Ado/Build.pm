@@ -91,6 +91,41 @@ sub ACTION_install {
         chmod(0600, catfile($log_dir, "$asset.log"))
           || Carp::carp("Problem with $log_dir/$asset.log: $!");
     }
+    $self->_set_env();
+    return;
+}
+
+#Sets Environmnent varable ADO_HOME in $HOME/.bashrc
+sub _set_env {
+    my $self = shift;
+    return if ($ENV{ADO_HOME});    #ADO_HOME is set
+
+    my $ado_home         = 'export ADO_HOME=' . $self->install_base;
+    my $ADO_HOME_MESSAGE = <<"MESS";
+
+Please do not forget to set ADO_HOME in your shell specific .*rc file:
+$ado_home
+so Ado plugins can easily find it.
+MESS
+    my $ADO_HOME_MESSAGE_SET_OK = <<"MESS";
+
+Do you want me to write ADO_HOME to $ENV{HOME}/.bashrc 
+so Ado plugins can easily find it?
+MESS
+    my $bashrc_file = catfile($ENV{HOME}, '.bashrc');
+    if (!(-w $bashrc_file)) {
+        $self->prompt($ADO_HOME_MESSAGE);
+    }
+    elsif (my $y = $self->prompt($ADO_HOME_MESSAGE_SET_OK, $ado_home)) {
+        if (open my $bashrc, '>>', $bashrc_file) {
+            say $bashrc "$/$ado_home$/";
+            close $bashrc;
+        }
+        else {
+            CORE::say STDERR 'ADO_HOME was not successfully set! Reason:' . $!
+              . "$/Please do it manually.";
+        }
+    }
     return;
 }
 
@@ -101,6 +136,22 @@ sub _empty_log_files {
     close $logd;
     open my $logp, ">", "$log_dir/production.log" || Carp::croak $!;
     close $logp;
+    return;
+}
+
+sub do_create_readme {
+    my $self = shift;
+    if ($self->dist_version_from =~ /Ado\.pm$/) {
+
+        #HACK to create README from Ado::Manual.pod
+        require Pod::Text;
+        my $readme_from = catfile('lib', 'Ado', 'Manual.pod');
+        my $parser = Pod::Text->new(sentence => 0, indent => 2, width => 80);
+        $parser->parse_from_file($readme_from, 'README');
+    }
+    else {
+        $self->SUPER::do_create_readme();
+    }
     return;
 }
 1;
@@ -153,6 +204,11 @@ You can put additional custom functionality here.
 =head2 ACTION_dist
 
 You can put additional custom functionality here.
+
+=head2 do_create_readme
+
+Creates the README file. It will be called during C<./Build dist> 
+if you set the property C<create_readme> in C<Build.PL>.
 
 =head2 ACTION_install
 

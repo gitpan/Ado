@@ -6,15 +6,15 @@ use warnings FATAL => 'all';
 use File::Spec::Functions qw(catdir);
 use Data::Dumper;
 use FindBin;
+use Module::Build;
 BEGIN { unshift @INC, "$FindBin::Bin/lib" }
-
-use Ado::Build;
-my $builder = Ado::Build->new(
-    module_name    => 'Ado',
-    license        => 'LGPL_3_0',
-    create_license => 1,
-    dist_author    => q{Красимир Беров <berov@cpan.org>},
-
+my $builder = Module::Build->new(
+    module_name        => 'Ado',
+    license            => 'LGPL_3_0',
+    create_license     => 1,
+    create_readme      => 1,
+    dist_author        => q{Красимир Беров <berov@cpan.org>},
+    build_class        => 'Ado::Build',
     release_status     => 'unstable',
     configure_requires => {
         'Module::Build' => '0.3800',
@@ -23,12 +23,8 @@ my $builder = Ado::Build->new(
         # base directory.
         'Software::License' => '0.103007',
     },
-    build_requires => {
-        'Test::More' => '0',
-        ($^O =~ /Win32/i ? ('Win32::Locale' => '0') : ()),
-
-    },
-    requires => {
+    build_requires => {'Test::More' => '0',},
+    requires       => {
         Mojolicious                => '4.59',
         'IO::Socket::SSL'          => '1.957',
         'Mojolicious::Plugin::DSC' => '0.999',
@@ -51,7 +47,7 @@ my $builder = Ado::Build->new(
     },
     recursive_test_files => 1,
     meta_merge           => {
-        requires  => {perl => '5.016003'},
+        requires  => {perl => '5.014002'},
         resources => {
             repository => "http://github.com/kberov/Ado",
             bugtracker => "http://github.com/kberov/Ado/issues",
@@ -69,10 +65,12 @@ $builder->install_base(
     $builder->prompt(
         "$/Where do you want to install ${\$builder->module_name}?$/"
           . "Some private install_base directory is *highly* recommended.$/"
-          . "The whole path will be created if it does not exist.$/",
+          . "The path will be created if it does not exist.$/",
         $default_install_base
     )
 ) unless $install_base;
+$builder->install_path(lib    => catdir($builder->install_base, 'lib'));
+$builder->install_path(arch   => catdir($builder->install_base, 'lib'));
 $builder->install_path(etc    => catdir($builder->install_base, 'etc'));
 $builder->install_path(public => catdir($builder->install_base, 'public'));
 $builder->install_path(log    => catdir($builder->install_base, 'log'));
