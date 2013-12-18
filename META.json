@@ -5,6 +5,15 @@
    ],
    "dynamic_config" : 1,
    "generated_by" : "Module::Build version 0.4003, CPAN::Meta::Converter version 2.120921",
+   "keywords" : [
+      "Ado",
+      "Mojolicious",
+      "web",
+      "ERP",
+      "REST",
+      "CMS",
+      "enterprise"
+   ],
    "license" : [
       "open_source"
    ],
@@ -21,8 +30,7 @@
       },
       "configure" : {
          "requires" : {
-            "Module::Build" : "0.3800",
-            "Software::License" : "0.103007"
+            "Module::Build" : "0.3800"
          }
       },
       "runtime" : {
@@ -37,7 +45,7 @@
          },
          "requires" : {
             "IO::Socket::SSL" : "1.957",
-            "Mojolicious" : "4.59",
+            "Mojolicious" : "4.60",
             "Mojolicious::Plugin::DSC" : "0.999",
             "perl" : "5.014002"
          }
@@ -46,10 +54,14 @@
    "provides" : {
       "Ado" : {
          "file" : "lib/Ado.pm",
-         "version" : "0.15"
+         "version" : "0.16"
       },
       "Ado::Build" : {
          "file" : "lib/Ado/Build.pm",
+         "version" : 0
+      },
+      "Ado::BuildPlugin" : {
+         "file" : "lib/Ado/BuildPlugin.pm",
          "version" : 0
       },
       "Ado::Command" : {
@@ -129,5 +141,5 @@
          "url" : "http://github.com/kberov/Ado"
       }
    },
-   "version" : "0.15"
+   "version" : "0.16"
 }
