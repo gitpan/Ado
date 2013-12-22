@@ -24,7 +24,7 @@ name: Ado
 provides:
   Ado:
     file: lib/Ado.pm
-    version: 0.16
+    version: 0.17
   Ado::Build:
     file: lib/Ado/Build.pm
     version: 0
@@ -88,12 +88,14 @@ recommends:
   Test::Pod: 1.48
   Test::Pod::Coverage: 1.08
 requires:
+  EV: 4.15
+  IO::Socket::IP: 0.24
   IO::Socket::SSL: 1.957
   Mojolicious: 4.60
   Mojolicious::Plugin::DSC: 0.999
-  perl: 5.014002
+  perl: 5.014000
 resources:
   bugtracker: http://github.com/kberov/Ado/issues
   license: http://www.gnu.org/licenses/lgpl-3.0.txt
   repository: http://github.com/kberov/Ado
-version: 0.16
+version: 0.17

@@ -5,49 +5,49 @@ use Mojo::Base 'Ado::Control::Ado';
 #available users on this system
 sub list {
     my $c = shift;
-    my $format = $c->stash('format') || '';
-    if ($format ne 'json') {
-        my $location = $c->url_for(format => 'json')->to_abs;
-        $c->res->headers->add('Content-Location' => $location);
-        $location = $c->link_to($location, {format => 'json'});
-        return $c->render(
-            inline => "415 - Unsupported Media Type $format. Please try $location!",
-            status => 415
-        );
-    }
-    $c->debug('rendering json only');
-
-    my @range = ($c->param('limit') || 10, $c->param('offset') || 0,);
-    my @users = Ado::Model::Users->select_range(@range);
-    $c->res->headers->content_range("users $range[1]-${\($range[0] + $range[1])}/*");
-
-    my $res = {
-        json => {
-            links => [
-                {   rel  => 'self',
-                    href => $c->url_with()->query(limit => $range[0], offset => $range[1])
-                },
-                {   rel => 'next',
-                    href =>
-                      $c->url_with()->query(limit => $range[0], offset => $range[0] + $range[1])
-                },
-                (   $range[1]
-                    ? { rel  => 'prev',
-                        href => $c->url_for()->query(
-                            limit  => $range[0],
-                            offset => $range[0] - $range[1]
-                        )
-                      }
-                    : ()
-                ),
-            ],
-            data => [map { $_->data } @users]
+    $c->require_formats(['json']) || return;
+    my $args = Params::Check::check(
+        {   limit => {
+                allow => sub { $_[0] =~ /^\d+$/ ? 1 : ($_[0] = 20); }
+            },
+            offset => {
+                allow => sub { $_[0] =~ /^\d+$/ ? 1 : defined($_[0] = 0); }
+            },
         },
-    };
+        {   limit  => $c->req->param('limit')  || 20,
+            offset => $c->req->param('offset') || 0,
+        }
+    );
+
+    $c->res->headers->content_range(
+        "users $$args{offset}-${\($$args{limit} + $$args{offset})}/*");
+    $c->debug("rendering json only [$$args{limit}, $$args{offset}]");
 
     #content negotiation
-    return $c->respond_to(json => $res);
+    return $c->respond_to(
+        json => $c->list_for_json(
+            [$$args{limit}, $$args{offset}],
+            [Ado::Model::Users->select_range($$args{limit}, $$args{offset})]
+        )
+    );
 }
+
+sub add {
+    return shift->render(text => 'not implemented...');
+}
+
+sub show {
+    return shift->render(text => 'not implemented...');
+}
+
+sub update {
+    return shift->render(text => 'not implemented...');
+}
+
+sub disable {
+    return shift->render(text => 'not implemented...');
+}
+
 
 1;
 
@@ -93,6 +93,22 @@ If other format is requested returns status 415 with C<Content-location> header
 pointing to the proper URI.
 See L<http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.16> and
 L<http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.14>.
+
+=head2 add
+
+Adds a user to the table users. Not implemented yet
+
+=head2 show
+
+Displays a user. Not implemented yet
+
+=head2 update
+
+Updates a user. Not implemented yet
+
+=head2 disable
+
+Disables a user. Not implemented yet
 
 =head1 SPONSORS
 

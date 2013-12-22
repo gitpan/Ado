@@ -1,5 +1,20 @@
 Revision history for Ado
 
+0.17 2013-12-21 00:11:06 CET
+    - Refactored list() in Ado::Control::Ado::Users
+    and implemented list_for_json in Ado::Control.
+    - Added test users test1 and test2.
+    - First attempt for a logo.
+    - Added dummy missing actions to Ado::Control::Ado::Users.
+    - Added $c->require_formats(['json', 'xml', 'etc']) to Ado::Control. 
+    - Enhanced _set_env in Ado::Build.
+    - Lower required Perl version to 5.014000.
+    - Enhanced POD.
+    - Requiering EV and  IO::Socket::IP as recommended
+    in Mojo::IOLoop for better scalabality and non-blocking apps.
+    - Added tests for POD spelling.
+    - Spellchecked and corrected all the POD.
+
 0.16 2013-12-19 00:03:47 CET
     - Implemented Ado::BuildPlugin (untested).
     - Enhanced Ado::Build documentation and 

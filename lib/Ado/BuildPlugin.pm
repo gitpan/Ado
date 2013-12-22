@@ -42,7 +42,7 @@ Ado::BuildPlugin - Custom routines for Ado::Plugin::* installation
 
 =head1 SYNOPSIS
 
-    #Ado must be installed in $ENV{ADO_HOME} 
+    #Ado must be already installed in $ENV{ADO_HOME} 
     use lib("$ENV{ADO_HOME}/lib");
     use Ado::BuildPlugin;
     my $builder = Ado::BuildPlugin->new(..);
@@ -56,7 +56,7 @@ so we can install Ado  and it plugins in a location chosen by the user.
 To use this module for installing your plugins
 $ENV{ADO_HOME} must be available and Ado installed there.
 
-This module and L<Ado::Build> exist because of the aditional install paths
+This module and L<Ado::Build> exist because of the additional install paths
 that we use beside c<lib> and <bin>. These modules also can serve as examples 
 for your own builders if you have some custom things to do during 
 build, test, install and even if you need to add a new C<ACTION_*> to your setup.
@@ -74,5 +74,22 @@ C<process_templates_files> from L<Ado::Build>.
 Creates a C<Build> script for instaling an L<Ado> plugin.
 
 
+=head1 AUTHOR
+
+Красимир Беров (Krasimir Berov)
+
+=head1 COPYRIGHT AND LICENSE
+
+Copyright 2013 Красимир Беров (Krasimir Berov).
+
+This program is free software, you can redistribute it and/or
+modify it under the terms of the 
+GNU Lesser General Public License v3 (LGPL-3.0).
+You may copy, distribute and modify the software provided that 
+modifications are open source. However, software that includes 
+the license may release under a different license.
+
+See http://opensource.org/licenses/lgpl-3.0.html for more information.
 
 =cut
+
