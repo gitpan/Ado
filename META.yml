@@ -24,7 +24,7 @@ name: Ado
 provides:
   Ado:
     file: lib/Ado.pm
-    version: 0.17
+    version: 0.18
   Ado::Build:
     file: lib/Ado/Build.pm
     version: 0
@@ -98,4 +98,4 @@ resources:
   bugtracker: http://github.com/kberov/Ado/issues
   license: http://www.gnu.org/licenses/lgpl-3.0.txt
   repository: http://github.com/kberov/Ado
-version: 0.17
+version: 0.18
