@@ -1,5 +1,5 @@
+.perltidyrc
 bin/ado
-bin/ado_perltidy
 Build.PL
 Changes
 etc/ado-sqlite-data.sql
@@ -33,6 +33,7 @@ lib/Ado/Model/UserGroup.pm
 lib/Ado/Model/Users.pm
 lib/Ado/Plugin.pm
 lib/Ado/Plugin/Routes.pm
+lib/Test/AdoPlugin.pm
 LICENSE
 log/development.log
 log/production.log
@@ -46,7 +47,6 @@ public/img/ose.02.gif
 public/index.html
 README
 t/.perlcriticrc
-t/.perltidyrc
 t/00-load.t
 t/basic.t
 t/boilerplate.t
@@ -57,5 +57,9 @@ t/pod-coverage.t
 t/pod-spelling.t
 t/pod.t
 t/restapi.t
+templates/exception.development.html.ep
+templates/exception.html.ep
 templates/layouts/default.html.ep
+templates/not_found.development.html.ep
+templates/not_found.html.ep
 templates/добре/ок.html.ep

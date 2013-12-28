@@ -55,7 +55,7 @@
    "provides" : {
       "Ado" : {
          "file" : "lib/Ado.pm",
-         "version" : "0.20"
+         "version" : "0.21"
       },
       "Ado::Build" : {
          "file" : "lib/Ado/Build.pm",
@@ -128,6 +128,10 @@
       "Ado::Plugin::Routes" : {
          "file" : "lib/Ado/Plugin/Routes.pm",
          "version" : 0
+      },
+      "Test::AdoPlugin" : {
+         "file" : "lib/Test/AdoPlugin.pm",
+         "version" : 0
       }
    },
    "release_status" : "stable",
@@ -142,5 +146,5 @@
          "url" : "http://github.com/kberov/Ado"
       }
    },
-   "version" : "0.20"
+   "version" : "0.21"
 }

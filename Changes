@@ -1,5 +1,17 @@
 Revision history for Ado
 
+0.21 2013-12-28 03:37:42 CET
+    - Added build action submit (draft).
+    - Added build action "perltidy" - see Ado::Build.
+      deleted:    bin/ado_perltidy
+      Thanks to Vulcho Nedelchev(WEBY) for the inspiration.
+    - Improved list_for_json in Ado::Control.
+    - Implemented validate_input in Ado::Control.
+    - Implemented Test::AdoPlugin.
+    - Huge enhancements in documentation 
+      (mostly in Ado::Manual::Contributing).
+    - Shut up "Wide character in print" from Pod::Spelling.
+
 0.20 2013-12-24 03:22:10 CET
     - Removed dependency IO::Socket::SSL - not mandatory yet
     - Upgraded to Mojolicious 4.63
