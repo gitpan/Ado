@@ -1,27 +1,23 @@
 NAME
   Ado::Manual - Getting started with Ado
 
-DESCRIPTION
-  Ado is a lightweight and reliable base for developing realtime web
-  applications with database backend for the enterprise.
+SYNOPSIS
+    cd where/is/Ado
+    bin/ado daemon
+    Server available at http://127.0.0.1:3000
 
-  Ado is based on Mojolicious and implements many of the recommendations
-  found in Mojolicious::Guides. When in doubt how to implement something we
-  first recur to these recommendations.
+DESCRIPTION
+  Ado is a framework for web projects based on Mojolicious, written in the
+  Perl programming language <http://www.perl.org/>.
 
   Ado is a typical Mojo application yet it adds some default configuration
-  and a model layer. An SQLite database is bundled in the distribution at
-  "etc/ado.sqlite" to get started quickly. Tables can be accessed and
-  manipulated using DBI, DBIx::Simple or any ORM. We prefer
-  DBIx::Simple::Class trough Mojolicious::Plugin::DSC. DBIx::Simple::Class
-  was developed in fact for Ado as a simple OM that provides representation
-  of table records as plain Perl objects. Ado is the successor of MYDLjE
-  <https://github.com/kberov/MYDLjE>.
+  and a model layer - Mojolicious::Plugin::DSC. An SQLite database is
+  bundled in the distribution at "etc/ado.sqlite" to get started quickly.
 
 INSTALLATION
-  Ado is meant to be installed into a folder of your choice. It can go into
-  the "site" folder of your *non-system Perl distro* but better install it
-  in its own folder.
+  Ado is meant to be *installed into a folder of your choice*. It can go
+  into the "site" folder of your *non-system Perl distro* but better install
+  it in its own folder.
 
   We do not recommend using Ado with your system Perl! Get a precompiled
   Perl distro like "Citrus Perl" (<http://www.citrusperl.com/download.html>)
@@ -29,37 +25,45 @@ INSTALLATION
   (<http://www.activestate.com/activeperl/downloads>) for your OS, or build
   your own using App::perlbrew.
 
-  Ado can be downloaded from CPAN <http://search.cpan.org/dist/Ado/> or
-  installed directly from CPAN using "cpan" or "cpanm" commandline tools.
+  Ado can be downloaded from CPAN <http://search.cpan.org/dist/Ado/> and
+  installed manually or installed directly from CPAN using "cpan" or "cpanm"
+  commandline tools.
 
-    cpan[2]> install Ado
-    Running install for module 'Ado'
-    Running make for B/BE/BEROV/Ado-0.20.tar.gz
-    ...  
-    Where do you want to install Ado?
-    Some private install_base directory is *highly* recommended.
-    The path will be created if it does not exist.
-     [/home/berov/opt/ado ]
-    /home/berov/opt/ado 
-    ...
-      BEROV/Ado-0.20.tar.gz
-    ./Build install install  -- OK
-
+ MANUAL
   To install manually Ado after downloading, run the following commands:
 
     tar -zxf Ado-X.XX.tar.gz
     cd Ado-X.XX/
-    perl Build.PL --install_base $HOME/path/to/ado
-    #if run without --install_base $HOME/opt/ado will be suggested
+    perl Build.PL --install_base $HOME/opt/ado
     ./Build installdeps
     ./Build
     ./Build test
     ./Build install
 
+ CPAN
+    cpanm Ado
+    #or
+    cpan[1]> install Ado
+    Running install for module 'Ado'
+    Running make for B/BE/BEROV/Ado-0.22.tar.gz
+    ...  
+    ...
+      BEROV/Ado-0.22.tar.gz
+    ./Build install install  -- OK
+
+ PERLBREW
+  Installing Ado under the perlbrew environment
+
+    perlbrew init
+    perlbrew install -n perl-5.18.1 --as ado -j 3
+    perlbrew switch ado
+    perlbrew install-cpanm
+    cpanm Ado
+
 SUPPORT AND DOCUMENTATION
   After installing, you can find documentation with the perldoc command. To
-  use "perldoc" for reading documentation you need to add the full path to
-  Ado "lib/" directory to "PERL5LIB" environment variable.
+  use "perldoc" for reading documentation you may need to add the full path
+  to Ado "lib/" directory to "PERL5LIB" environment variable.
 
       perldoc Ado
       perldoc Ado::Manual #this page

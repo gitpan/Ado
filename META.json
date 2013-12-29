@@ -4,7 +4,7 @@
       "ÐÑÐ°ÑÐ¸Ð¼Ð¸Ñ ÐÐµÑÐ¾Ð² <berov@cpan.org>"
    ],
    "dynamic_config" : 1,
-   "generated_by" : "Module::Build version 0.4003, CPAN::Meta::Converter version 2.120921",
+   "generated_by" : "Module::Build version 0.4203",
    "keywords" : [
       "Ado",
       "Mojolicious",
@@ -15,7 +15,7 @@
       "enterprise"
    ],
    "license" : [
-      "open_source"
+      "lgpl_3_0"
    ],
    "meta-spec" : {
       "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
@@ -30,7 +30,8 @@
       },
       "configure" : {
          "requires" : {
-            "Module::Build" : "0.3800"
+            "Module::Build" : "0.3800",
+            "Software::License" : "0.103007"
          }
       },
       "runtime" : {
@@ -38,6 +39,7 @@
             "DBD::SQLite" : "1.40",
             "Devel::Cover" : "1.08",
             "Perl::Tidy" : "0",
+            "Pod::Markdown" : "0",
             "Test::CheckManifest" : "0",
             "Test::Perl::Critic" : "0",
             "Test::Pod" : "1.48",
@@ -48,90 +50,72 @@
             "IO::Socket::IP" : "0.24",
             "Mojolicious" : "4.63",
             "Mojolicious::Plugin::DSC" : "0.999",
-            "perl" : "5.014000"
+            "perl" : "v5.14.0"
          }
       }
    },
    "provides" : {
       "Ado" : {
          "file" : "lib/Ado.pm",
-         "version" : "0.21"
+         "version" : "0.22"
       },
       "Ado::Build" : {
-         "file" : "lib/Ado/Build.pm",
-         "version" : 0
+         "file" : "lib/Ado/Build.pm"
       },
       "Ado::BuildPlugin" : {
-         "file" : "lib/Ado/BuildPlugin.pm",
-         "version" : 0
+         "file" : "lib/Ado/BuildPlugin.pm"
       },
       "Ado::Command" : {
-         "file" : "lib/Ado/Command.pm",
-         "version" : 0
+         "file" : "lib/Ado/Command.pm"
       },
       "Ado::Control" : {
-         "file" : "lib/Ado/Control.pm",
-         "version" : 0
+         "file" : "lib/Ado/Control.pm"
       },
       "Ado::Control::Ado" : {
-         "file" : "lib/Ado/Control/Ado.pm",
-         "version" : 0
+         "file" : "lib/Ado/Control/Ado.pm"
       },
       "Ado::Control::Ado::Default" : {
-         "file" : "lib/Ado/Control/Ado/Default.pm",
-         "version" : 0
+         "file" : "lib/Ado/Control/Ado/Default.pm"
       },
       "Ado::Control::Ado::Users" : {
-         "file" : "lib/Ado/Control/Ado/Users.pm",
-         "version" : 0
+         "file" : "lib/Ado/Control/Ado/Users.pm"
       },
       "Ado::Control::Default" : {
-         "file" : "lib/Ado/Control/Default.pm",
-         "version" : 0
+         "file" : "lib/Ado/Control/Default.pm"
       },
       "Ado::Model" : {
          "file" : "lib/Ado/Model.pm",
          "version" : "0.01"
       },
       "Ado::Model::Domains" : {
-         "file" : "lib/Ado/Model/Domains.pm",
-         "version" : 0
+         "file" : "lib/Ado/Model/Domains.pm"
       },
       "Ado::Model::Groups" : {
-         "file" : "lib/Ado/Model/Groups.pm",
-         "version" : 0
+         "file" : "lib/Ado/Model/Groups.pm"
       },
       "Ado::Model::Sessions" : {
-         "file" : "lib/Ado/Model/Sessions.pm",
-         "version" : 0
+         "file" : "lib/Ado/Model/Sessions.pm"
       },
       "Ado::Model::SessionsOld" : {
-         "file" : "lib/Ado/Model/SessionsOld.pm",
-         "version" : 0
+         "file" : "lib/Ado/Model/SessionsOld.pm"
       },
       "Ado::Model::SqliteSequence" : {
-         "file" : "lib/Ado/Model/SqliteSequence.pm",
-         "version" : 0
+         "file" : "lib/Ado/Model/SqliteSequence.pm"
       },
       "Ado::Model::UserGroup" : {
-         "file" : "lib/Ado/Model/UserGroup.pm",
-         "version" : 0
+         "file" : "lib/Ado/Model/UserGroup.pm"
       },
       "Ado::Model::Users" : {
-         "file" : "lib/Ado/Model/Users.pm",
-         "version" : 0
+         "file" : "lib/Ado/Model/Users.pm"
       },
       "Ado::Plugin" : {
-         "file" : "lib/Ado/Plugin.pm",
-         "version" : 0
+         "file" : "lib/Ado/Plugin.pm"
       },
       "Ado::Plugin::Routes" : {
-         "file" : "lib/Ado/Plugin/Routes.pm",
-         "version" : 0
+         "file" : "lib/Ado/Plugin/Routes.pm"
       },
       "Test::AdoPlugin" : {
-         "file" : "lib/Test/AdoPlugin.pm",
-         "version" : 0
+         "file" : "lib/Test/AdoPlugin.pm"
       }
    },
    "release_status" : "stable",
@@ -146,5 +130,5 @@
          "url" : "http://github.com/kberov/Ado"
       }
    },
-   "version" : "0.21"
+   "version" : "0.22"
 }
