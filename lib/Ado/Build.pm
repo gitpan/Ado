@@ -6,13 +6,14 @@ use File::Spec::Functions qw(catdir catfile catpath);
 use File::Path qw(make_path);
 use File::Copy qw(copy);
 use Cwd qw(abs_path);
+use ExtUtils::Installed;
+use ExtUtils::Install;
 use parent 'Module::Build';
 use Exporter qw( import );    #export functionality to Ado::BuildPlugin etc..
 our @EXPORT_OK = qw(
   create_build_script process_etc_files
   process_public_files process_templates_files
   ACTION_perltidy ACTION_submit);
-
 
 #Shamelessly stollen from File::HomeDir::Windows
 my $HOME =
@@ -26,24 +27,19 @@ my $HOME =
 
 
 sub create_build_script {
-    my $self           = shift;
-    my @build_elements = qw(lib etc public log templates);
-    if ($self->module_name ne 'Ado') {    #A plugin!!!
-        say 'Please use Ado::BuildPlugin for installing plugins!';
-        return;
-    }
+    my $self = shift;
 
-    #setting default install_base
+    #Deciding where to install
     my $c = $self->{config};
-    $self->install_base || $self->install_base($c->get('siteprefixexp'));
-    $self->install_path(arch => catdir($self->install_base, 'lib'));
-    for my $be (qw(lib etc public log templates)) {
+    my $prefix = $self->install_base || $c->get('siteprefixexp');
+    for my $be (qw(etc public log templates)) {
+
+        #in case of installing a plugin, check if folder exists
         next unless -d $be;
         $self->add_build_element($be);
-        $self->install_path($be => catdir($self->install_base, $be));
+        $self->install_path($be => catdir($prefix, $be));
     }
-    $self->SUPER::create_build_script();
-    return;
+    return $self->SUPER::create_build_script();
 }
 
 sub process_public_files {
@@ -95,6 +91,24 @@ sub process_templates_files {
     return;
 }
 
+sub _get_packlist {
+    my $self = shift;
+
+    my $module    = $self->module_name;
+    my $installed = ExtUtils::Installed->new;
+
+    return $installed->packlist($module)->packlist_file;
+}
+
+sub ACTION_uninstall {
+    my $self = shift;
+    return ExtUtils::Install::uninstall($self->_get_packlist, 1);
+}
+
+sub ACTION_fakeuninstall {
+    my $self = shift;
+    return ExtUtils::Install::uninstall($self->_get_packlist, 1, 1);
+}
 
 sub ACTION_build {
     my $self = shift;
@@ -166,14 +180,14 @@ sub ACTION_perltidy {
                 my $file = $File::Find::name;
                 unlink $file and return if $file =~ /.bak/;
                 push @files, $file
-                  if $file =~ m/(\.conf|\.pm|.pl|Build\.PL|ado\|\.t)$/x;
+                  if $file =~ m/(\.conf|\.pm|.pl|ado\|\.t)$/x;
             },
         },
         map { abs_path($_) } (qw(bin lib etc t))
     );
 
     #We use ./.perltidyrc for all arguments
-    Perl::Tidy::perltidy(argv => [@files]);
+    Perl::Tidy::perltidy(argv => [@files, 'Build.PL']);
     foreach my $file (@files) {
         unlink("$file.bak") if -f "$file.bak";
     }
@@ -325,6 +339,14 @@ C<$self-E<gt>SUPER::ACTION_dist>. See the sources for details.
 Changes file permissions to C<0600> of some files 
 like C<etc/ado.sqlite> and to C<0400> of some files like C<etc/ado.conf>.
 You can put additional custom functionality here.
+
+=head2 ACTION_fakeuninstall
+
+Dry run for uninstall operation against module Ado.
+
+=head2 ACTION_uninstall
+
+Perform uninstall operation against Ado module.
 
 =head2 ACTION_perltidy
 

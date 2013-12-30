@@ -1,10 +1,23 @@
 Revision history for Ado
 
+0.23 2013-12-30 03:14:17 CET
+    - Added experimental tests for Ado::Build.
+    - Fixed ACTION_perltidy - did not tidy Build.PL
+    - Dynamically generating  META.json and META.yml
+      depending on if $ENV{TEST_AUTHOR} is set 
+      thus requiring fewer dependencies.
+    - Updated Manual.pod
+    - Added uninstall and fakeuninstall actions to Ado::Build (Valcho).
+    - Fixed wrong install_path for lib directory
+      when "--install_base" is not passed as argument.
+    - Using Perl's $Config{siteprefixexp} for
+      other directories: qw(etc public log templates).
+
 0.22 2013-12-29 03:30:38 CET
     - Refactored creation of README.md, kept README.
-    - Wellcome Vylcho to the core team :)!
+    - Wellcome Valcho to the core team :)!
     - Removed $ADO_HOME (by popular demand) 
-    and symplified installation process a lot.
+      and symplified installation process a lot.
     - Improved Manual.pod/README.
 
 0.21 2013-12-28 03:37:42 CET

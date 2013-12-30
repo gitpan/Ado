@@ -6,7 +6,6 @@ build_requires:
   Test::More: 0
 configure_requires:
   Module::Build: 0.3800
-  Software::License: 0.103007
 dynamic_config: 1
 generated_by: 'Module::Build version 0.4203, CPAN::Meta::Converter version 2.133380'
 keywords:
@@ -22,10 +21,17 @@ meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
   version: 1.4
 name: Ado
+no_index:
+  namespace:
+    - Ado::Model
+    - Ado::Command
+    - Ado::Control
+    - Ado::Plugin
+    - Test::Ado
 provides:
   Ado:
     file: lib/Ado.pm
-    version: 0.22
+    version: 0.23
   Ado::Build:
     file: lib/Ado/Build.pm
   Ado::BuildPlugin:
@@ -67,13 +73,6 @@ provides:
     file: lib/Test/AdoPlugin.pm
 recommends:
   DBD::SQLite: 1.40
-  Devel::Cover: 1.08
-  Perl::Tidy: 0
-  Pod::Markdown: 0
-  Test::CheckManifest: 0
-  Test::Perl::Critic: 0
-  Test::Pod: 1.48
-  Test::Pod::Coverage: 1.08
 requires:
   EV: 4.15
   IO::Socket::IP: 0.24
@@ -82,6 +81,5 @@ requires:
   perl: v5.14.0
 resources:
   bugtracker: http://github.com/kberov/Ado/issues
-  license: http://www.gnu.org/licenses/lgpl-3.0.txt
   repository: http://github.com/kberov/Ado
-version: 0.22
+version: 0.23
