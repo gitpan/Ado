@@ -12,8 +12,8 @@ BEGIN {
 
 use Ado::Control;
 our $AUTHORITY = 'cpan:BEROV';
-our $VERSION   = '0.23';
-
+our $VERSION   = '0.24';
+our $CODENAME  = 'U+2C00 GLAGOLITIC CAPITAL LETTER AZU (Ⰰ)';
 
 # This method will run once at server start
 sub startup {

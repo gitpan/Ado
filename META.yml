@@ -31,13 +31,15 @@ no_index:
 provides:
   Ado:
     file: lib/Ado.pm
-    version: 0.23
+    version: 0.24
   Ado::Build:
     file: lib/Ado/Build.pm
   Ado::BuildPlugin:
     file: lib/Ado/BuildPlugin.pm
   Ado::Command:
     file: lib/Ado/Command.pm
+  Ado::Command::version:
+    file: lib/Ado/Command/version.pm
   Ado::Control:
     file: lib/Ado/Control.pm
   Ado::Control::Ado:
@@ -74,12 +76,10 @@ provides:
 recommends:
   DBD::SQLite: 1.40
 requires:
-  EV: 4.15
-  IO::Socket::IP: 0.24
   Mojolicious: 4.63
   Mojolicious::Plugin::DSC: 0.999
   perl: v5.14.0
 resources:
   bugtracker: http://github.com/kberov/Ado/issues
   repository: http://github.com/kberov/Ado
-version: 0.23
+version: 0.24

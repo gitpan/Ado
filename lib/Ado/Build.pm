@@ -91,23 +91,36 @@ sub process_templates_files {
     return;
 }
 
-sub _get_packlist {
-    my $self = shift;
+sub _uninstall {
+    my $self    = shift;
+    my $dryrun  = shift;
+    my $verbose = shift || 1;    # true by default
+
+    unshift @INC, $self->install_base if $self->install_base;
 
     my $module    = $self->module_name;
     my $installed = ExtUtils::Installed->new;
+    my $packlist  = $installed->packlist($module)->packlist_file;
 
-    return $installed->packlist($module)->packlist_file;
+    # Remove all installed files
+    ExtUtils::Install::uninstall($packlist, $verbose, $dryrun);
+
+    # Remove empty installation directories
+    foreach (reverse sort $installed->directories($module)) {
+        say "rmdir $_" and next if $verbose and $dryrun;
+        say rmdir $_ ? "rmdir $_" : "rmdir $_ - $!" if not $dryrun;
+    }
+    return;
 }
 
 sub ACTION_uninstall {
     my $self = shift;
-    return ExtUtils::Install::uninstall($self->_get_packlist, 1);
+    return $self->_uninstall;
 }
 
 sub ACTION_fakeuninstall {
     my $self = shift;
-    return ExtUtils::Install::uninstall($self->_get_packlist, 1, 1);
+    return $self->_uninstall('dry-run');
 }
 
 sub ACTION_build {
@@ -167,36 +180,37 @@ sub ACTION_install {
 
 sub ACTION_perltidy {
     my $self = shift;
-    require File::Find;
     eval { require Perl::Tidy } || do {
-        say "Perl::Tidy is not installed$/" . "Please install it and rerun ./Build perltidy";
+        $self->log_warn(
+            "Perl::Tidy is not installed$/" . "Please install it and rerun ./Build perltidy$/");
         return;
     };
     my @files;
-    File::Find::find(
-        {   no_chdir => 1,
-            wanted   => sub {
-                return if -d $File::Find::name;
-                my $file = $File::Find::name;
-                unlink $file and return if $file =~ /.bak/;
-                push @files, $file
-                  if $file =~ m/(\.conf|\.pm|.pl|ado\|\.t)$/x;
-            },
-        },
-        map { abs_path($_) } (qw(bin lib etc t))
-    );
+    for my $dir (qw(bin lib etc t)) {
+        my $dir_files = $self->rscan_dir(catdir($self->base_dir, $dir));
+        for my $file (@$dir_files) {
+            push @files, $file
+              if -f $file && $file =~ m{(\.pl|/ado|\.pm|\.conf|\.t)$}x;
+        }
+    }
+    push @files, catfile($self->base_dir, 'Build.PL');
+    if ($self->verbose) {
+        say join($/, @files) . "$/perltidy-ing " . @files . " files...";
+    }
 
     #We use ./.perltidyrc for all arguments
-    Perl::Tidy::perltidy(argv => [@files, 'Build.PL']);
+    Perl::Tidy::perltidy(argv => [@files]);
     foreach my $file (@files) {
         unlink("$file.bak") if -f "$file.bak";
     }
-    return 1;
+    say "perltidy-ed distribution.";
+    return;
 }
 
 sub ACTION_submit {
     my $self = shift;
-    $self->depends_on("perltidy");
+
+    #$self->depends_on("perltidy");
     say "TODO: commit and push after tidying and testing and who knows what";
     return;
 }
