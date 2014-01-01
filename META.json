@@ -1,62 +1,27 @@
 {
    "abstract" : "busy or delaying activity; bustle; fuss.",
-   "author" : [
-      "ÐÑÐ°ÑÐ¸Ð¼Ð¸Ñ ÐÐµÑÐ¾Ð² <berov@cpan.org>"
-   ],
+   "author" : [],
    "dynamic_config" : 1,
    "generated_by" : "Module::Build version 0.4203",
-   "keywords" : [
-      "Ado",
-      "Mojolicious",
-      "web",
-      "ERP",
-      "REST",
-      "CMS",
-      "enterprise"
-   ],
    "license" : [
-      "lgpl_3_0"
+      "unknown"
    ],
    "meta-spec" : {
       "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
       "version" : "2"
    },
    "name" : "Ado",
-   "no_index" : {
-      "namespace" : [
-         "Ado::Model",
-         "Ado::Command",
-         "Ado::Control",
-         "Ado::Plugin",
-         "Test::Ado"
-      ]
-   },
    "prereqs" : {
-      "build" : {
-         "requires" : {
-            "Test::More" : "0"
-         }
-      },
       "configure" : {
          "requires" : {
-            "Module::Build" : "0.3800"
-         }
-      },
-      "runtime" : {
-         "recommends" : {
-            "DBD::SQLite" : "1.40"
-         },
-         "requires" : {
-            "Mojolicious" : "4.63",
-            "Mojolicious::Plugin::DSC" : "0.999",
-            "perl" : "v5.14.0"
+            "Module::Build" : "0.38"
          }
       }
    },
    "provides" : {
       "Ado" : {
          "file" : "lib/Ado.pm",
-         "version" : "0.24"
+         "version" : "0.25"
       },
       "Ado::Build" : {
          "file" : "lib/Ado/Build.pm"
@@ -121,13 +86,5 @@
       }
    },
    "release_status" : "stable",
-   "resources" : {
-      "bugtracker" : {
-         "web" : "http://github.com/kberov/Ado/issues"
-      },
-      "repository" : {
-         "url" : "http://github.com/kberov/Ado"
-      }
-   },
-   "version" : "0.24"
+   "version" : "0.25"
 }
