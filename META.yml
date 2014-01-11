@@ -1,21 +1,37 @@
 ---
 abstract: 'busy or delaying activity; bustle; fuss.'
 author:
-  - unknown
-build_requires: {}
+  - 'ÐÑÐ°ÑÐ¸Ð¼Ð¸Ñ ÐÐµÑÐ¾Ð² <berov@cpan.org>'
+build_requires:
+  Test::More: 0
 configure_requires:
-  Module::Build: 0.38
+  Module::Build: 0.3800
 dynamic_config: 1
 generated_by: 'Module::Build version 0.4203, CPAN::Meta::Converter version 2.133380'
-license: unknown
+keywords:
+  - Ado
+  - Mojolicious
+  - web
+  - ERP
+  - REST
+  - CMS
+  - enterprise
+license: lgpl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
   version: 1.4
 name: Ado
+no_index:
+  namespace:
+    - Ado::Model
+    - Ado::Command
+    - Ado::Control
+    - Ado::Plugin
+    - Test::Ado
 provides:
   Ado:
     file: lib/Ado.pm
-    version: 0.25
+    version: 0.26
   Ado::Build:
     file: lib/Ado/Build.pm
   Ado::BuildPlugin:
@@ -57,4 +73,13 @@ provides:
     file: lib/Ado/Plugin/Routes.pm
   Test::AdoPlugin:
     file: lib/Test/AdoPlugin.pm
-version: 0.25
+recommends:
+  DBD::SQLite: 1.40
+requires:
+  Mojolicious: 4.63
+  Mojolicious::Plugin::DSC: 0.999
+  perl: v5.14.0
+resources:
+  bugtracker: http://github.com/kberov/Ado/issues
+  repository: http://github.com/kberov/Ado
+version: 0.26

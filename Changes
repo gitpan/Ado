@@ -1,5 +1,14 @@
 Revision history for Ado
 
+0.26 2014-01-11
+    - Improved Ado::Command::version output.
+    - Improved Ado::Manual.
+    - Not depending on Mojo::Util in Ado::Build.
+    - Fixed small bug in create_readme() and optimized it.
+    - Installing to the more popular "siteprefix" by default.
+    - Fixed failing test because of missing Test::Output.
+
+
 0.25 2014-01-01 20:27:50 CET
     - Added more tests for Ado::Build (test coverage is > 90%).
     - Fixed ACTION_perltidy. We do not modify Build.PL any more.
