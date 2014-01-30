@@ -47,7 +47,7 @@
             "DBD::SQLite" : "1.40"
          },
          "requires" : {
-            "Mojolicious" : "4.63",
+            "Mojolicious" : "4.71",
             "Mojolicious::Plugin::DSC" : "0.999",
             "perl" : "v5.14.0"
          }
@@ -56,7 +56,7 @@
    "provides" : {
       "Ado" : {
          "file" : "lib/Ado.pm",
-         "version" : "0.26"
+         "version" : "0.27"
       },
       "Ado::Build" : {
          "file" : "lib/Ado/Build.pm"
@@ -116,6 +116,15 @@
       "Ado::Plugin::Routes" : {
          "file" : "lib/Ado/Plugin/Routes.pm"
       },
+      "Ado::Sessions" : {
+         "file" : "lib/Ado/Sessions.pm"
+      },
+      "Ado::Sessions::Database" : {
+         "file" : "lib/Ado/Sessions/Database.pm"
+      },
+      "Ado::Sessions::File" : {
+         "file" : "lib/Ado/Sessions/File.pm"
+      },
       "Test::AdoPlugin" : {
          "file" : "lib/Test/AdoPlugin.pm"
       }
@@ -129,5 +138,5 @@
          "url" : "http://github.com/kberov/Ado"
       }
    },
-   "version" : "0.26"
+   "version" : "0.27"
 }
