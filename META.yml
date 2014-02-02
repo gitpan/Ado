@@ -31,7 +31,7 @@ no_index:
 provides:
   Ado:
     file: lib/Ado.pm
-    version: 0.29
+    version: 0.30
   Ado::Build:
     file: lib/Ado/Build.pm
   Ado::BuildPlugin:
@@ -88,4 +88,4 @@ requires:
 resources:
   bugtracker: http://github.com/kberov/Ado/issues
   repository: http://github.com/kberov/Ado
-version: 0.29
+version: 0.30
