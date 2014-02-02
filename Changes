@@ -1,9 +1,14 @@
 Revision history for Ado
 
-0.27 2014-01-11
+0.28 2014-02-02
+    - This is a bugfix release.
+    - Have a testing copy of ado.conf and ado.sqlite in t/etc
+    - Checking for Test::Output in t/command/version.t
+    - Creating README only if $ENV{TEST_AUTHOR}.
+
+0.27 2014-01-29
     - Upgraded to Mojolicious 4.71.
-    - Experimental CORS-ready Ado sessions
-      provided by Ado::Model::Sessions.
+    - Experimental CORS-ready Ado::Sessions with file and database storage.
     - Fixed bug in Ado::Build::ACTION_dist.
       It was not emptying log files.
 
