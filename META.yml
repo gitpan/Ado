@@ -31,7 +31,7 @@ no_index:
 provides:
   Ado:
     file: lib/Ado.pm
-    version: 0.32
+    version: 0.33
   Ado::Build:
     file: lib/Ado/Build.pm
   Ado::BuildPlugin:
@@ -86,11 +86,11 @@ provides:
 recommends:
   DBD::SQLite: 1.40
 requires:
-  Mojolicious: 4.81
+  Mojolicious: 4.83
   Mojolicious::Plugin::DSC: 0.999
   Text::MultiMarkdown: 1.000034
   perl: v5.14.0
 resources:
   bugtracker: http://github.com/kberov/Ado/issues
   repository: http://github.com/kberov/Ado
-version: 0.32
+version: 0.33
