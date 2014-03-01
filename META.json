@@ -1,5 +1,5 @@
 {
-   "abstract" : "busy or delaying activity; bustle; fuss.",
+   "abstract" : "a rapid active commotion (framework for web projects on Mojolicious)",
    "author" : [
       "ÐÑÐ°ÑÐ¸Ð¼Ð¸Ñ ÐÐµÑÐ¾Ð² <berov@cpan.org>"
    ],
@@ -47,7 +47,7 @@
             "DBD::SQLite" : "1.40"
          },
          "requires" : {
-            "Mojolicious" : "4.83",
+            "Mojolicious" : "4.85",
             "Mojolicious::Plugin::DSC" : "0.999",
             "Text::MultiMarkdown" : "1.000034",
             "perl" : "v5.14.0"
@@ -57,7 +57,7 @@
    "provides" : {
       "Ado" : {
          "file" : "lib/Ado.pm",
-         "version" : "0.34"
+         "version" : "0.35"
       },
       "Ado::Build" : {
          "file" : "lib/Ado/Build.pm"
@@ -145,5 +145,5 @@
          "url" : "http://github.com/kberov/Ado"
       }
    },
-   "version" : "0.34"
+   "version" : "0.35"
 }

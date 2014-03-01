@@ -75,9 +75,7 @@ public/doc/bg/site_apps.md
 public/doc/bg/store.md
 public/doc/bg/toc.md
 public/doc/bg/users.md
-public/img/logo.png
-public/img/logo.svg
-public/img/ose.02.gif
+public/img/5FE59-ado.jpg
 public/index.html
 public/js/help_toc.js
 public/vendor/pagedown/LICENSE.txt
@@ -127,6 +125,7 @@ t/sessions/00-load.t
 t/sessions/database.t
 t/sessions/file.t
 t/sessions/mojolicious.t
+templates/default/index.html.ep
 templates/doc/show.html.ep
 templates/exception.development.html.ep
 templates/exception.html.ep
