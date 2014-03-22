@@ -47,7 +47,7 @@
             "DBD::SQLite" : "1.40"
          },
          "requires" : {
-            "Mojolicious" : "4.85",
+            "Mojolicious" : "4.90",
             "Mojolicious::Plugin::DSC" : "0.999",
             "Text::MultiMarkdown" : "1.000034",
             "perl" : "v5.14.0"
@@ -57,7 +57,7 @@
    "provides" : {
       "Ado" : {
          "file" : "lib/Ado.pm",
-         "version" : "0.35"
+         "version" : "0.36"
       },
       "Ado::Build" : {
          "file" : "lib/Ado/Build.pm"
@@ -89,6 +89,9 @@
       "Ado::Control::Doc" : {
          "file" : "lib/Ado/Control/Doc.pm"
       },
+      "Ado::Control::Test" : {
+         "file" : "lib/Ado/Control/Test.pm"
+      },
       "Ado::Model" : {
          "file" : "lib/Ado/Model.pm",
          "version" : "0.01"
@@ -116,6 +119,12 @@
       },
       "Ado::Plugin" : {
          "file" : "lib/Ado/Plugin.pm"
+      },
+      "Ado::Plugin::AdoHelpers" : {
+         "file" : "lib/Ado/Plugin/AdoHelpers.pm"
+      },
+      "Ado::Plugin::Auth" : {
+         "file" : "lib/Ado/Plugin/Auth.pm"
       },
       "Ado::Plugin::MarkdownRenderer" : {
          "file" : "lib/Ado/Plugin/MarkdownRenderer.pm"
@@ -145,5 +154,5 @@
          "url" : "http://github.com/kberov/Ado"
       }
    },
-   "version" : "0.35"
+   "version" : "0.36"
 }
