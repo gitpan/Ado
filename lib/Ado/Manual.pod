@@ -19,9 +19,13 @@ configuration and a model layer - L<Mojolicious::Plugin::DSC>.
 An SQLite database is bundled in the distribution at C<etc/ado.sqlite> 
 to get started quickly.
 
-Since version 0.31 L<Ado> goes together with the following:
+Since version 0.37 L<Ado> goes together with the following:
 
 =over
+
+=item * L<Ado::Command::adduser> allows adding users to an Ado application
+via a terminal. It also allows adding users to existing or not existing groups. 
+The new group is automatically created.
 
 =item * L<Ado::Plugin::Auth> is a plugin that authenticates users to an L<Ado> system.
 Users can be authenticated locally or using (TODO!) Facebook, Google, Twitter
@@ -111,7 +115,7 @@ Installing Ado using Carton
 
 After installing, you can find documentation with the
 perldoc command. To use C<perldoc> for reading documentation you may 
-need to add the full path to L<Ado> C<lib/Perl5> directory to C<PERL5LIB>
+need to add the full path to L<Ado> C<lib> directory to C<PERL5LIB>
 environment variable in case you passed the C<--install_base> to C<Build.PL>.
 
     perldoc Ado

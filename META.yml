@@ -31,13 +31,15 @@ no_index:
 provides:
   Ado:
     file: lib/Ado.pm
-    version: 0.36
+    version: 0.37
   Ado::Build:
     file: lib/Ado/Build.pm
   Ado::BuildPlugin:
     file: lib/Ado/BuildPlugin.pm
   Ado::Command:
     file: lib/Ado/Command.pm
+  Ado::Command::adduser:
+    file: lib/Ado/Command/adduser.pm
   Ado::Command::version:
     file: lib/Ado/Command/version.pm
   Ado::Control:
@@ -99,4 +101,4 @@ requires:
 resources:
   bugtracker: http://github.com/kberov/Ado/issues
   repository: http://github.com/kberov/Ado
-version: 0.36
+version: 0.37

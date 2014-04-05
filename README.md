@@ -17,8 +17,11 @@ configuration and a model layer - [Mojolicious::Plugin::DSC](https://metacpan.or
 An SQLite database is bundled in the distribution at `etc/ado.sqlite` 
 to get started quickly.
 
-Since version 0.31 [Ado](https://metacpan.org/pod/Ado) goes together with the following:
+Since version 0.37 [Ado](https://metacpan.org/pod/Ado) goes together with the following:
 
+- [Ado::Command::adduser](https://metacpan.org/pod/Ado::Command::adduser) allows adding users to an Ado application
+via a terminal. It also allows adding users to existing or not existing groups. 
+The new group is automatically created.
 - [Ado::Plugin::Auth](https://metacpan.org/pod/Ado::Plugin::Auth) is a plugin that authenticates users to an [Ado](https://metacpan.org/pod/Ado) system.
 Users can be authenticated locally or using (TODO!) Facebook, Google, Twitter
 and other authentication service-providers.
@@ -103,7 +106,7 @@ Installing Ado using Carton
 
 After installing, you can find documentation with the
 perldoc command. To use `perldoc` for reading documentation you may 
-need to add the full path to [Ado](https://metacpan.org/pod/Ado) `lib/Perl5` directory to `PERL5LIB`
+need to add the full path to [Ado](https://metacpan.org/pod/Ado) `lib` directory to `PERL5LIB`
 environment variable in case you passed the `--install_base` to `Build.PL`.
 
     perldoc Ado
