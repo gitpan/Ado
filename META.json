@@ -47,7 +47,7 @@
             "DBD::SQLite" : "1.40"
          },
          "requires" : {
-            "Mojolicious" : "4.90",
+            "Mojolicious" : "4.92",
             "Mojolicious::Plugin::DSC" : "0.999",
             "Text::MultiMarkdown" : "1.000034",
             "perl" : "v5.14.0"
@@ -57,7 +57,7 @@
    "provides" : {
       "Ado" : {
          "file" : "lib/Ado.pm",
-         "version" : "0.37"
+         "version" : "0.38"
       },
       "Ado::Build" : {
          "file" : "lib/Ado/Build.pm"
@@ -157,5 +157,5 @@
          "url" : "http://github.com/kberov/Ado"
       }
    },
-   "version" : "0.37"
+   "version" : "0.38"
 }
