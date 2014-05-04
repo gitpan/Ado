@@ -264,7 +264,12 @@ sub do_create_readme {
         $parser->parse_from_file($readme_from);
         my $readme_md = 'README.md';
         if (open(my $out, '>', $readme_md)) {
-            $out->say($parser->as_markdown);
+            my $markdown = $parser->as_markdown;
+            my $ci_badge =
+                '[![Build Status](https://travis-ci.org/kberov/Ado.svg?'
+              . 'branch=master)](https://travis-ci.org/kberov/Ado)';
+            $markdown =~ s/(\n.+Travis-CI.+\n)/$1\n$ci_badge\n\n/xgm;
+            $out->say($markdown);
             $out->close;
             $self->log_info("Created $readme_md$/");
         }
@@ -440,7 +445,7 @@ Build.PL in Ado distribution directory.
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2013 Красимир Беров (Krasimir Berov).
+Copyright 2013-2014 Красимир Беров (Krasimir Berov).
 
 This program is free software, you can redistribute it and/or
 modify it under the terms of the 
