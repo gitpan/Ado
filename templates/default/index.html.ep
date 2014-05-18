@@ -16,7 +16,7 @@
   });
   %end
 % }
-  <h1>Hello, <%=user->name%>!</h1>
+  <h1><%= l 'hello', user->name %></h1>
   <img id="ado-img" class="ui rounded right floated image" 
     title="Ado – a rapid active commotion" 
     src="/img/5FE59-ado.jpg" />
@@ -79,15 +79,19 @@
     <li>For development help look at <a href="<%=url_for('/perldoc')%>">/perldoc</a>!</li>
     <li>Develop your site, application or both!</li>
     <li>Enough ado, have fun with <b>Ado</b>!</li>
-    <li>Still here? Ado comes with some default end-user features which can be tryed right away.
+    <li>Still here? Ado comes with some default end-user features which can be tried right away.
         <ol>
           <li>
             User <a href="<%=url_for('/help')%>">documentation</a> works thanks
-            to <a href="<%=url_for('/perldoc/Ado::Plugin::MarkdownRenderer')%>">Ado::Plugin::MarkdownRenderer</a>.
+            to <a href="<%=url_for('/perldoc/Ado/Plugin/MarkdownRenderer')%>">Ado::Plugin::MarkdownRenderer</a>.
           </li>
           <li>
-            User <a href="<%=url_for('/test/authenticateduser')%>">authentication</a> works thanks to <a href="<%=url_for('/perldoc/Ado::Plugin::Auth')%>">Ado::Plugin::Auth</a>.
+            User <a href="<%=url_for('/test/authenticateduser')%>">authentication</a> works thanks to <a href="<%=url_for('/perldoc/Ado/Plugin/Auth')%>">Ado::Plugin::Auth</a>.
             Try <i>User: 'test1'; Password: 'test1'</i>!
+          </li>
+          <li>
+            Multilanguage support is implemented as
+            <a href="<%=url_for('/perldoc/Ado/Plugin/I18n')%>">Ado::Plugin::I18n</a>.
           </li>
         </ol>
     </li>
@@ -109,5 +113,4 @@ See http://opensource.org/licenses/lgpl-3.0.html for more information.</p>
 
 <script type="text/javascript">
   $('#ado-img').popup();
-  $('.Ⰲ').popup({position : 'bottom right'});
 </script>
