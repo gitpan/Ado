@@ -11,7 +11,7 @@ BEGIN {
     }
 }
 our $AUTHORITY = 'cpan:BEROV';
-our $VERSION   = '0.43';
+our $VERSION   = '0.45';
 our $CODENAME  = 'U+2C02 Главна буква ВЕДИ от Глаголицата (Ⰲ)';
 
 use Ado::Control;
@@ -124,6 +124,7 @@ Ado - a rapid active commotion (framework for web projects on Mojolicious)
 L<Ado> is a framework for web projects based on L<Mojolicious>,
 written in the L<Perl programming language|http://www.perl.org/>.
 This is the base application class. Ado C<ISA> L<Mojolicious>.
+For a more detailed description on how to get started with Ado see L<Ado::Manual>.
 
 =head1 ATTRIBUTES
 

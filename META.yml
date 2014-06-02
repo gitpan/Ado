@@ -32,7 +32,7 @@ no_index:
 provides:
   Ado:
     file: lib/Ado.pm
-    version: '0.43'
+    version: '0.45'
   Ado::Build:
     file: lib/Ado/Build.pm
   Ado::BuildPlugin:
@@ -103,11 +103,11 @@ recommends:
 requires:
   Email::Address: '1.901'
   Locale::Maketext: '1.23'
-  Mojolicious: '4.99'
+  Mojolicious: '5.02'
   Mojolicious::Plugin::DSC: '0.999'
   Text::MultiMarkdown: '1.000034'
   perl: v5.14.0
 resources:
   bugtracker: http://github.com/kberov/Ado/issues
   repository: http://github.com/kberov/Ado
-version: '0.43'
+version: '0.45'
