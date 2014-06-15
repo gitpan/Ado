@@ -1,13 +1,13 @@
 ---
-abstract: 'a rapid active commotion (framework for web projects on Mojolicious)'
+abstract: 'a rapid active commotion (framework for web-projects on Mojolicious)'
 author:
-  - "Ð\x9AÑ\x80Ð°Ñ\x81Ð¸Ð¼Ð¸Ñ\x80 Ð\x91ÐµÑ\x80Ð¾Ð² <berov@cpan.org>"
+  - 'ÐÑÐ°ÑÐ¸Ð¼Ð¸Ñ ÐÐµÑÐ¾Ð² <berov@cpan.org>'
 build_requires:
-  Test::More: '0'
+  Test::More: 0
 configure_requires:
-  Module::Build: '0.3800'
+  Module::Build: 0.3800
 dynamic_config: 1
-generated_by: 'Module::Build version 0.4203, CPAN::Meta::Converter version 2.133380'
+generated_by: 'Module::Build version 0.4203, CPAN::Meta::Converter version 2.132830'
 keywords:
   - Ado
   - Mojolicious
@@ -20,7 +20,7 @@ keywords:
 license: lgpl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
-  version: '1.4'
+  version: 1.4
 name: Ado
 no_index:
   namespace:
@@ -32,7 +32,7 @@ no_index:
 provides:
   Ado:
     file: lib/Ado.pm
-    version: '0.45'
+    version: 0.46
   Ado::Build:
     file: lib/Ado/Build.pm
   Ado::BuildPlugin:
@@ -41,6 +41,12 @@ provides:
     file: lib/Ado/Command.pm
   Ado::Command::adduser:
     file: lib/Ado/Command/adduser.pm
+  Ado::Command::generate:
+    file: lib/Ado/Command/generate.pm
+  Ado::Command::generate::apache2htaccess:
+    file: lib/Ado/Command/generate/apache2htaccess.pm
+  Ado::Command::generate::apache2vhost:
+    file: lib/Ado/Command/generate/apache2vhost.pm
   Ado::Command::version:
     file: lib/Ado/Command/version.pm
   Ado::Control:
@@ -65,7 +71,7 @@ provides:
     file: lib/Ado/I18n/en.pm
   Ado::Model:
     file: lib/Ado/Model.pm
-    version: '0.01'
+    version: 0.01
   Ado::Model::Domains:
     file: lib/Ado/Model/Domains.pm
   Ado::Model::Groups:
@@ -99,15 +105,15 @@ provides:
   Test::AdoPlugin:
     file: lib/Test/AdoPlugin.pm
 recommends:
-  DBD::SQLite: '1.42'
+  DBD::SQLite: 1.42
 requires:
-  Email::Address: '1.901'
-  Locale::Maketext: '1.23'
-  Mojolicious: '5.02'
-  Mojolicious::Plugin::DSC: '0.999'
-  Text::MultiMarkdown: '1.000034'
+  Email::Address: 1.901
+  Locale::Maketext: 1.23
+  Mojolicious: 5.07
+  Mojolicious::Plugin::DSC: 0.999
+  Text::MultiMarkdown: 1.000034
   perl: v5.14.0
 resources:
   bugtracker: http://github.com/kberov/Ado/issues
   repository: http://github.com/kberov/Ado
-version: '0.45'
+version: 0.46
