@@ -6,13 +6,18 @@ has description => "Generates Apache2 .htaccess file.\n";
 has usage       => sub { shift->extract_usage };
 has args        => sub { {} };
 
+# The next two are more or less stollen from File::Which.
+my $IS_DOS = ($^O eq 'MSWin32' or $^O eq 'dos' or $^O eq 'os2');
+
 sub _which {
+    return $_[0]->{$_[1]} if $_[0]->{$_[1]};
     my @pathext = ('');
-    push @pathext, map {lc} split /;/, $ENV{PATHEXT} if $ENV{PATHEXT};
+    push @pathext, map {lc} split /;/, $ENV{PATHEXT} if $ENV{PATHEXT} && $IS_DOS;
     foreach my $path (File::Spec->path($ENV{PATH})) {
         foreach my $ext (@pathext) {
             my $exe = File::Spec->catfile($path, ($ext ? "$_[1].$ext" : $_[1]));
-            return $exe if -e $exe;
+            $exe =~ s|\\|/|g;
+            return $_[0]->{$_[1]} = $exe if -e $exe;
         }
     }
     return '';
@@ -30,9 +35,12 @@ sub run {
     @{$args->{module}} = split(/,/, join(',', @{$args->{module}}));
     Carp::croak $self->usage unless $args->{module}[0];
     $args->{DocumentRoot} = $self->app->home;
-    $args->{DocumentRoot} =~ s|\\|/|g;
-    $args->{perl} = $^X;
-    $args->{perl} =~ s|\\|/|g;
+    $args->{perl}         = $^X;
+
+    if ($IS_DOS) {
+        $args->{DocumentRoot} =~ s|\\|/|g;
+        $args->{perl} =~ s|\\|/|g;
+    }
     $args->{plackup} = $self->_which('plackup');
 
     say STDERR 'Using arguments:' . $self->app->dumper($args) if $args->{verbose};
@@ -46,8 +54,7 @@ sub run {
     else {
         say $config;
     }
-    return;
-
+    return $self;
 }
 
 1;
@@ -139,9 +146,10 @@ L<Ado::Command::generate> and implements the following new ones.
 
 =head2 run
 
-  $htaccess->run(@ARGV);
-
-Run this command.
+  my $htaccess = Ado::Command::generate::apache2htaccess->run(@ARGV);
+  my $htaccess = $app->commands->run("generate", "apache2htaccess", 
+    '-m' => 'cgi,fcgid', '-c' => $config_file);
+Run this command. Returns C<$self>.
 
 =head1 SEE ALSO
 
