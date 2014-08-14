@@ -18,6 +18,7 @@ my $author = {
         'Test::CheckManifest' => '0',
         'Test::Pod::Coverage' => '1.08',
         'Test::Pod'           => '1.48',
+        'Lingua::Ispell'=>'0',
         'Test::Pod::Spelling' => '0.4',
         'Devel::Cover'        => '1.08',
         'Test::Exception'     => '0.32',
@@ -54,7 +55,7 @@ my $builder = Ado::Build->new(
     },
     requires => {
         'perl'                     => '5.14.0',
-        'Mojolicious'              => '5.23',
+        'Mojolicious'              => '5.28',
         'Mojolicious::Plugin::DSC' => '0.999',
         'DBIx::Simple::Class'      => '1.008',
         'Email::Address'           => '1.901',
