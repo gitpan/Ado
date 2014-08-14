@@ -3,6 +3,7 @@ abstract: 'a rapid active commotion (framework for web-projects on Mojolicious)'
 author:
   - "Ð\x9AÑ\x80Ð°Ñ\x81Ð¸Ð¼Ð¸Ñ\x80 Ð\x91ÐµÑ\x80Ð¾Ð² <berov@cpan.org>"
 build_requires:
+  Module::Build: '0.4204'
   Test::More: '0'
 configure_requires:
   Module::Build: '0.4204'
@@ -32,7 +33,7 @@ no_index:
 provides:
   Ado:
     file: lib/Ado.pm
-    version: '0.56'
+    version: '0.57'
   Ado::Build:
     file: lib/Ado/Build.pm
   Ado::BuildPlugin:
@@ -127,4 +128,4 @@ requires:
 resources:
   bugtracker: http://github.com/kberov/Ado/issues
   repository: http://github.com/kberov/Ado
-version: '0.56'
+version: '0.57'

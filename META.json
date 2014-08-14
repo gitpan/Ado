@@ -35,6 +35,7 @@
    "prereqs" : {
       "build" : {
          "requires" : {
+            "Module::Build" : "0.4204",
             "Test::More" : "0"
          }
       },
@@ -67,7 +68,7 @@
    "provides" : {
       "Ado" : {
          "file" : "lib/Ado.pm",
-         "version" : "0.56"
+         "version" : "0.57"
       },
       "Ado::Build" : {
          "file" : "lib/Ado/Build.pm"
@@ -191,5 +192,5 @@
          "url" : "http://github.com/kberov/Ado"
       }
    },
-   "version" : "0.56"
+   "version" : "0.57"
 }
