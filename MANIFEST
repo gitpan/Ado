@@ -32,6 +32,7 @@ lib/Ado/Control/Doc.pm
 lib/Ado/Control/Test.pm
 lib/Ado/I18n.pm
 lib/Ado/I18n/bg.pm
+lib/Ado/I18n/de.pm
 lib/Ado/I18n/en.pm
 lib/Ado/Manual.pod
 lib/Ado/Manual/Contributing.pod
@@ -149,6 +150,7 @@ t/plugin/ado_helpers.t
 t/plugin/auth-00.t
 t/plugin/auth-01.t
 t/plugin/auth-02.t
+t/plugin/auth-03.t
 t/plugin/example-00.t
 t/plugin/example-01.t
 t/plugin/i18n-00.t
@@ -167,6 +169,7 @@ t/sessions/file.t
 t/sessions/mojolicious.t
 templates/default/index.html.ep
 templates/default/index_text.html+bg.ep
+templates/default/index_text.html+de.ep
 templates/default/index_text.html.ep
 templates/doc/show.html.ep
 templates/exception.html.ep
